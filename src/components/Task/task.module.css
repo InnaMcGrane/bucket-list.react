@@ -1,0 +1,10 @@
+.task {
+  background-color: rgb(189, 218, 243);
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.task__title {
+  font-size: 20px;
+  font-weight: bold;
+}
