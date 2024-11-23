@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "sass": "^1.81.0"
   }
 }

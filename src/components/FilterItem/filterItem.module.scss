@@ -1,16 +1,15 @@
- .filter-item {
+.filter-item {
   color: rgb(148, 82, 82);
   padding: 8px 25px;
   cursor: pointer;
 
   &--active {
-  background-color: rgb(148, 82, 82);
-  color: rgb(231, 231, 231);
-  border-radius: 7px;
+    background-color: rgb(148, 82, 82);
+    color: rgb(231, 231, 231);
+    border-radius: 7px;
+  }
 }
 
-}
- 
 /* .filter-item--active {
   background-color: rgb(148, 82, 82);
   color: rgb(231, 231, 231);

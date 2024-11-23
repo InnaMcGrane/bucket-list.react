@@ -1,12 +1,23 @@
 import Filter from "../Filter/Filter";
 import cn from "classnames";
+import styles from "./bucketList.module.scss";
+import data from '../../data.js';
+import Task from "../Task/Task.jsx";
 
 function BucketList() {
   return (
-    <div className="bucket-list">
-      <main className="bucket-list__main">
-        <div className="bucket-list__filter"><Filter/> </div>
-        <div className="bucket-list__content"></div>
+    <div className={cn(styles["bucket-list"])}>
+      <main className={cn(styles["bucket-list__main"])}>
+        <div className={cn(styles["bucket-list__filter"])}>
+          <Filter />
+        </div>
+        <div className={cn(styles["bucket-list__content"])}>
+          {
+            data.map((el) => {
+            return <Task title={el.title} desc={el.desc} key={el.id}/>
+            })
+          }
+        </div>
       </main>
     </div>
   );
