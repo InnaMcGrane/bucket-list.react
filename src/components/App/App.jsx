@@ -1,5 +1,7 @@
+import BucketList from "../BucketList/BucketList";
+
 function App() {
-    return
+    return <BucketList />;
 }
 
-export default App();
+export default App;
