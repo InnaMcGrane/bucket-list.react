@@ -7,20 +7,31 @@ import { useEffect, useState } from "react";
 
 function BucketList() {
   const [tasks, setTasks] = useState([]);
+  const [curruntFilterCategory, setCurruntFilterCategory] = useState('All')
 
   useEffect(() => {
     setTasks([...data])
   }, [])
   
+    const getCategories = () => {
+    const arr = tasks.reduce(
+      (acc, el) => {
+        return [...acc, el.category];
+      },
+      ["All"]
+    );
+    return Array.from(new Set(arr));
+  }
+
   return (
     <div className={cn(styles["bucket-list"])}>
       <main className={cn(styles["bucket-list__main"])}>
         <div className={cn(styles["bucket-list__filter"])}>
-          <Filter />
+          <Filter categories={getCategories()}/>
         </div>
         <div className={cn(styles["bucket-list__content"])}>
           {
-            data.map((el) => {
+            tasks.map((el) => {
             return <Task title={el.title} desc={el.desc} key={el.id}/>
             })
           }
