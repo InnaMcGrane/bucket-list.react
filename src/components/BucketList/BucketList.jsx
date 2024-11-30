@@ -14,7 +14,7 @@ function BucketList() {
   }, []);
 
   const getCategories = () => {
-    console.log('call getCategories func');
+    console.log("call getCategories func");
     const arr = tasks.reduce(
       (acc, el) => {
         return [...acc, el.category];
@@ -26,17 +26,23 @@ function BucketList() {
 
   const memoCategories = useMemo(() => getCategories(), [tasks]);
 
+  const generateTasks = () => {
+    if (curruntFilterCategory === "All") {
+      return tasks.map((el) => <Task title={el.title} desc={el.desc} key={el.id} />);
+    }
+
+    return tasks.filter((task) => task.category === curruntFilterCategory).map((el) => <Task title={el.title} desc={el.desc} key={el.id} />);
+  };
+  
+  const memoTasks = useMemo(() => generateTasks(), [curruntFilterCategory, tasks]);
+
   return (
     <div className={cn(styles["bucket-list"])}>
       <main className={cn(styles["bucket-list__main"])}>
         <div className={cn(styles["bucket-list__filter"])}>
           <Filter categories={memoCategories} curruntFilterCategory={curruntFilterCategory} />
         </div>
-        <div className={cn(styles["bucket-list__content"])}>
-          {tasks.map((el) => {
-            return <Task title={el.title} desc={el.desc} key={el.id} />;
-          })}
-        </div>
+        <div className={cn(styles["bucket-list__content"])}>{memoTasks}</div> 
       </main>
     </div>
   );
