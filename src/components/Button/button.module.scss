@@ -1,0 +1,18 @@
+.btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #1d1d1d;
+
+  &--remove {
+    background-color: rgb(238, 99, 99);
+  }
+
+  &--favorite {
+    background-color: rgb(234, 234, 109);
+  }
+
+  &--done {
+    background-color: rgb(127, 225, 127);
+  }
+}

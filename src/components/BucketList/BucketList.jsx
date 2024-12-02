@@ -9,6 +9,19 @@ function BucketList() {
   const [tasks, setTasks] = useState([]);
   const [curruntFilterCategory, setCurruntFilterCategory] = useState("All");
 
+  // продолжить посылать handler в filter
+  const curruntFilterCategoryHandler = (newCategory) => {
+    setCurruntFilterCategory(newCategory);
+  }
+
+  // 00^00^14
+
+  // useMemo(() => {return 1 + 1}, []);
+  // useMemo(() => {return 2 + 1}, [curruntFilterCategory]);
+  // useMemo(() => {return 2 + 2}, [tasks]);
+  // useMemo(() => {return 2 + 3}, [curruntFilterCategory, tasks]);
+  // useMemo(() => {return 5}, [timer]);
+
   useEffect(() => {
     setTasks([...data]);
   }, []);
@@ -23,7 +36,7 @@ function BucketList() {
     );
     return Array.from(new Set(arr));
   };
-
+  
   const memoCategories = useMemo(() => getCategories(), [tasks]);
 
   const generateTasks = () => {
@@ -40,9 +53,9 @@ function BucketList() {
     <div className={cn(styles["bucket-list"])}>
       <main className={cn(styles["bucket-list__main"])}>
         <div className={cn(styles["bucket-list__filter"])}>
-          <Filter categories={memoCategories} curruntFilterCategory={curruntFilterCategory} />
+          <Filter categories={memoCategories} curruntFilterCategory={curruntFilterCategory} handler={curruntFilterCategoryHandler} />
         </div>
-        <div className={cn(styles["bucket-list__content"])}>{memoTasks}</div> 
+        <div className={cn(styles["bucket-list__content"])}>{memoTasks}</div>
       </main>
     </div>
   );
