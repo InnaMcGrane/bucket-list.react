@@ -7,20 +7,12 @@ import { useEffect, useState, useMemo } from "react";
 
 function BucketList() {
   const [tasks, setTasks] = useState([]);
-  const [curruntFilterCategory, setCurruntFilterCategory] = useState("All");
+  const [currentFilterCategory, setcurrentFilterCategory] = useState("All");
 
   // продолжить посылать handler в filter
-  const curruntFilterCategoryHandler = (newCategory) => {
-    setCurruntFilterCategory(newCategory);
-  }
-
-  // 00^00^14
-
-  // useMemo(() => {return 1 + 1}, []);
-  // useMemo(() => {return 2 + 1}, [curruntFilterCategory]);
-  // useMemo(() => {return 2 + 2}, [tasks]);
-  // useMemo(() => {return 2 + 3}, [curruntFilterCategory, tasks]);
-  // useMemo(() => {return 5}, [timer]);
+  const currentFilterCategoryHandler = (newCategory) => {
+    setcurrentFilterCategory(newCategory);
+  };
 
   useEffect(() => {
     setTasks([...data]);
@@ -36,24 +28,24 @@ function BucketList() {
     );
     return Array.from(new Set(arr));
   };
-  
+
   const memoCategories = useMemo(() => getCategories(), [tasks]);
 
   const generateTasks = () => {
-    if (curruntFilterCategory === "All") {
+    if (currentFilterCategory === "All") {
       return tasks.map((el) => <Task title={el.title} desc={el.desc} key={el.id} />);
     }
 
-    return tasks.filter((task) => task.category === curruntFilterCategory).map((el) => <Task title={el.title} desc={el.desc} key={el.id} />);
+    return tasks.filter((task) => task.category === currentFilterCategory).map((el) => <Task title={el.title} desc={el.desc} key={el.id} />);
   };
-  
-  const memoTasks = useMemo(() => generateTasks(), [curruntFilterCategory, tasks]);
+
+  const memoTasks = useMemo(() => generateTasks(), [currentFilterCategory, tasks]);
 
   return (
     <div className={cn(styles["bucket-list"])}>
       <main className={cn(styles["bucket-list__main"])}>
         <div className={cn(styles["bucket-list__filter"])}>
-          <Filter categories={memoCategories} curruntFilterCategory={curruntFilterCategory} handler={curruntFilterCategoryHandler} />
+          <Filter categories={memoCategories} currentFilterCategory={currentFilterCategory} handler={currentFilterCategoryHandler} />
         </div>
         <div className={cn(styles["bucket-list__content"])}>{memoTasks}</div>
       </main>

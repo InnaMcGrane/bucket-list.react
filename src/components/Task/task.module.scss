@@ -2,6 +2,7 @@
   background-color: rgb(189, 218, 243);
   padding: 10px;
   border-radius: 7px;
+  border-bottom: 2px solid transparent;
 
   &__title {
     font-size: 20px;
@@ -11,5 +12,13 @@
   &__control {
     display: flex;
     gap: 7px;
+  }
+
+  &--done {
+    background-color: rgb(107, 227, 159);
+  }
+
+  &--favorite {
+  border-bottom: 2px solid rgb(233, 150, 67);
   }
 }
