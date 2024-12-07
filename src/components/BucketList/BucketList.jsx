@@ -53,7 +53,7 @@ function BucketList() {
         <div className={cn(styles["bucket-list__filter"])}>
           <Filter categories={memoCategories} currentFilterCategory={currentFilterCategory} handler={currentFilterCategoryHandler} />
         </div>
-        <div className={cn(styles["bucket-list__content"])}>{memoTasks}</div>
+        <div className={cn(styles["bucket-list__content"])}>{memoTasks.length > 0 ? memoTasks : "Tasks are not found"}</div>
       </main>
     </div>
   );

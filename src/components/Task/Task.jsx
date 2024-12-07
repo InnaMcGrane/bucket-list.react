@@ -2,6 +2,7 @@ import cn from "classnames";
 import styles from "./task.module.scss"
 import Button from "../Button/Button";
 import { useState } from "react";
+import tasks from "../../data";
 
 
 function Task({ id, title, desc, removeTaskHandler }) {
@@ -13,7 +14,11 @@ function Task({ id, title, desc, removeTaskHandler }) {
       <h3 className={cn(styles["task__title"])}>{title}</h3>
       <p className={cn(styles["task__desc"])}>{desc}</p>
       <div className={cn(styles["task__control"])}>
-        <Button text="Remove" type="remove" handler={() => removeTaskHandler(id)} />
+        <Button text="Remove" type="remove" handler={() => {
+          if (window.confirm(`Would you like to remove ${title}?`)) {
+            removeTaskHandler(id)
+          }
+        }} />
         <Button text={favorite === true ? "unfavorite" : "favorite"} type="favorite" handler={() => setFavorite(!favorite)} />
         <Button text={done === true ? "undone" : "done"} type="done" handler={() => setDone(!done)} />
       </div>
