@@ -49,6 +49,9 @@ function BucketList() {
 
   return (
     <div className={cn(styles["bucket-list"])}>
+      <header className="bucket-list__header">
+        <span className="bucket-list__total">total tasks: {tasks.length}</span>
+      </header>
       <main className={cn(styles["bucket-list__main"])}>
         <div className={cn(styles["bucket-list__filter"])}>
           <Filter categories={memoCategories} currentFilterCategory={currentFilterCategory} handler={currentFilterCategoryHandler} />
