@@ -10,6 +10,7 @@ import CreateTaskForm from "../CreateTaskForm/CreateTaskForm.jsx";
 function BucketList() {
   const [tasks, setTasks] = useState([]);
   const [currentFilterCategory, setcurrentFilterCategory] = useState("All");
+  const [isActiveCreateTaskForm, setIsActiveCreateTaskForm] = useState(false)
 
   // продолжить посылать handler в filter
   const currentFilterCategoryHandler = (newCategory) => {
@@ -60,8 +61,9 @@ function BucketList() {
         </div>
         <div className={cn(styles["bucket-list__content"])}>{memoTasks.length > 0 ? memoTasks : "Tasks are not found"}</div>
         <footer className={cn(styles["bucket-list__footer"])}>
-          <Button text="Create Task" type="primary" handler={() => console.log('create')} />
-          <CreateTaskForm/>
+          <Button text="Create Task" type="primary" handler={() => setIsActiveCreateTaskForm(!isActiveCreateTaskForm)} />
+
+          {isActiveCreateTaskForm === true ? <CreateTaskForm /> : null}
         </footer>
       </main>
     </div>
