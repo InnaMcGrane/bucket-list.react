@@ -1,0 +1,11 @@
+.create-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  &__input {
+    background-color: bisque;
+    padding: 5px 10px;
+    border-radius: 7px;
+  }
+}

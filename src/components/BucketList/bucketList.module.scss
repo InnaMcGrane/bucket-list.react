@@ -36,4 +36,12 @@
     height: 400px;
     overflow-y: auto;
   }
+
+  &__footer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+  }
 }

@@ -4,6 +4,8 @@ import styles from "./bucketList.module.scss";
 import data from "../../data.js";
 import Task from "../Task/Task.jsx";
 import { useEffect, useState, useMemo } from "react";
+import Button from "../Button/Button.jsx";
+import CreateTaskForm from "../CreateTaskForm/CreateTaskForm.jsx";
 
 function BucketList() {
   const [tasks, setTasks] = useState([]);
@@ -57,6 +59,10 @@ function BucketList() {
           <Filter categories={memoCategories} currentFilterCategory={currentFilterCategory} handler={currentFilterCategoryHandler} />
         </div>
         <div className={cn(styles["bucket-list__content"])}>{memoTasks.length > 0 ? memoTasks : "Tasks are not found"}</div>
+        <footer className={cn(styles["bucket-list__footer"])}>
+          <Button text="Create Task" type="primary" handler={() => console.log('create')} />
+          <CreateTaskForm/>
+        </footer>
       </main>
     </div>
   );
