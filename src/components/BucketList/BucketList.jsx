@@ -17,6 +17,11 @@ function BucketList() {
     setcurrentFilterCategory(newCategory);
   };
 
+  const addTaskHandler = (object) => {
+    setTasks([...tasks, object]);
+    setIsActiveCreateTaskForm(false)
+  }
+
   const removeTaskHandler = (id) => {
     const filteredTasks = tasks.filter((el) => el.id !== id);
     setTasks(filteredTasks);
@@ -63,7 +68,7 @@ function BucketList() {
         <footer className={cn(styles["bucket-list__footer"])}>
           <Button text="Create Task" type="primary" handler={() => setIsActiveCreateTaskForm(!isActiveCreateTaskForm)} />
 
-          {isActiveCreateTaskForm === true ? <CreateTaskForm /> : null}
+          {isActiveCreateTaskForm === true ? <CreateTaskForm handler={addTaskHandler} /> : null}
         </footer>
       </main>
     </div>
