@@ -3,6 +3,9 @@
   padding: 10px;
   border-radius: 7px;
   border-bottom: 2px solid transparent;
+  display:flex;
+  flex-direction: column;
+  gap: 7px;
 
   &__title {
     font-size: 20px;
@@ -21,4 +24,5 @@
   &--favorite {
   border-bottom: 2px solid rgb(233, 150, 67);
   }
+
 }
